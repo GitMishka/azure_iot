@@ -7,6 +7,8 @@
 <button onclick="startDevice()">Start</button>
 <button onclick="stopDevice()">Stop</button>
 
+<p id="data"></p>
+
 <script>
 function startDevice() {
   fetch('/start')
@@ -19,6 +21,13 @@ function stopDevice() {
   .then(response => response.json())
   .then(data => console.log(data));
 }
+
+// Fetch data every second and update the page
+setInterval(function() {
+  fetch('/data')
+  .then(response => response.json())
+  .then(data => document.getElementById('data').innerText = 'Data: ' + data.data);
+}, 1000);
 </script>
 
 </body>
