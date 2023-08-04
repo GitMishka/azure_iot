@@ -36,6 +36,9 @@ def stop_device():
     if device.is_running:
         device.stop()
     return jsonify({"status": "Device stopped"})
+@app.route('/data', methods=['GET'])
+def get_data():
+    return jsonify({"data": device.data})
 
 if __name__ == '__main__':
     app.run(port=5000)
