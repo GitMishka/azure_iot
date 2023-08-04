@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>IoT Device Control</h1>
+
+<button onclick="startDevice()">Start</button>
+<button onclick="stopDevice()">Stop</button>
+
+<script>
+function startDevice() {
+  fetch('/start')
+  .then(response => response.json())
+  .then(data => console.log(data));
+}
+
+function stopDevice() {
+  fetch('/stop')
+  .then(response => response.json())
+  .then(data => console.log(data));
+}
+</script>
+
+</body>
+</html>
