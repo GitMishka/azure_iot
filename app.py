@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from threading import Thread
 import time
 
@@ -18,6 +18,10 @@ class IoTDevice:
         self.is_running = False
 
 device = IoTDevice()
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/start', methods=['GET'])
 def start_device():
