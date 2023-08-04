@@ -1,22 +1,23 @@
 from flask import Flask, jsonify, render_template
 from threading import Thread
 import time
-
+import random 
 app = Flask(__name__)
 
 class IoTDevice:
     def __init__(self):
         self.is_running = False
+        self.data = 0
 
     def start(self):
         self.is_running = True
         while self.is_running:
-            print("IoT device is running...")
+            self.data = random.randint(0, 100)  # generates random number between 0 and 100
+            print("IoT device is running, data: ", self.data)
             time.sleep(1)
 
     def stop(self):
         self.is_running = False
-
 device = IoTDevice()
 
 @app.route('/')
